@@ -14,7 +14,7 @@ public class App {
 
         //first parameter is the kth to last value 
         //second parameter is the list 
-        returnKthtoLast(2,list);
+        returnKthtoLast(4,list);
         
     }
 
@@ -25,7 +25,7 @@ public class App {
             System.out.println("Out of bounds");
             return;
         }
-        System.out.println(list.get(size - i));
+        System.out.println(list.get(size -i ) );
         return;
     }
 }
