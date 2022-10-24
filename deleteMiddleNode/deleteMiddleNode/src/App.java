@@ -6,11 +6,13 @@ public class App {
 
        list.add('a');
        list.add("b");
-       list.add("d");
-       list.add( "c");
+       list.add("c");
+       list.add( "d");
        list.add("e");
        
        deleteMiddleNode("c", list);
+
+       System.out.println(list);
 
 
 
@@ -18,6 +20,8 @@ public class App {
 
     private static void deleteMiddleNode(String letra, LinkedList list) {
         int index = list.indexOf(letra);
-        System.out.println(index);
+        
+        list.remove(index);
+        
     }
 }
