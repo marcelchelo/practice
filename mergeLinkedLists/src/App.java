@@ -66,7 +66,6 @@ public class App {
 
         System.out.println(map);
 
-
     //take the key set of map. For every key, append to cobinedList the value of the key
          Set keySet = map.keySet();
 
@@ -82,11 +81,6 @@ public class App {
            counter = 0;
 
          });
-
-        
-    
-        
-
 
         
         
