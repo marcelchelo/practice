@@ -10,11 +10,15 @@ public class App {
         listA.add(40);
         listA.add(3);
         listA.add(2);
+        listA.add(5);
 
         LinkedList listB = new LinkedList<Integer>();
         listB.add(1);
         listB.add(2);
         listB.add(3);
+        listB.add(5);
+        listB.add(5);
+        listB.add(5);
         
        
         LinkedList combinedList = new LinkedList<Integer>();
