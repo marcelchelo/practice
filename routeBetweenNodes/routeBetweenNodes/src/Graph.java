@@ -1,20 +1,31 @@
-
-import java.util.List;
+import java.util.ArrayList;
 
 public class Graph {
-   //public List <Node> members = new List<Node>() ;
+    // public List <Node> members = new List<Node>() ;
 
-   public Node[] members;
+    public Node[] members;
 
-   //constructor
+    // constructor
     public Graph(Node[] members) {
         this.members = members;
     }
 
-    public void printMembers(){
-        System.out.println(members.length);
+    // method to print number of members in this graph
+    public int numberOfMembers() {
+        return members.length;
     }
 
+    public String getValue(int location) {
+        return members[location].name;
+    }
 
-    
+    public Node getNode(int location) {
+        return members[location];
+    }
+
+    // public ArrayList<Node> getList(int location) {
+    // return members[location].children; // returns a the node, which will contain
+    // an arrayList
+    // }
+
 }
