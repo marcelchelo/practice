@@ -3,6 +3,7 @@ import java.util.ArrayList;
 // each node should store the nodes the point to, in 
 public class Node {
     public String name;
+    public boolean visited = false;
     public ArrayList<Node> children = new ArrayList<Node>();
 
     // constructor

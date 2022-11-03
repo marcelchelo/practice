@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+
+
+
 //given a graph, determine if there is a route between two nodes
 
 public class App {
@@ -21,9 +25,10 @@ public class App {
         a.putChildren(b);
         a.putChildren(c);
         b.putChildren(e);
-        d.putChildren(d);
+        d.putChildren(e);
         d.putChildren(a);
         e.putChildren(g);
+        g.putChildren(d);
 
         Node[] memberNodes = { a, b, c, d, e, g };
 
@@ -32,19 +37,20 @@ public class App {
 
         // i need to know if there is a path between certain nodes
 
-        boolean solution = routesBetween(graph, a, g);
+        boolean solution = routesBetween(graph, a, c);
 
         System.out.println(solution);
 
     }
 
     private static boolean routesBetween(Graph graph, Node start, Node end) {
+        if (start == end){
+            return true;
+        }
+
+        boolean solution = false;
         // graph is an array of nodes
-        // therefore should be able to get the value of graph index 1
-
-        // we created a method in class graph to get the value of the node in the array
-        // it contains.
-
+        // we created a method in class graph to get the value of a node in the array
         // System.out.println(graph.getValue(0)); // prints a
 
         // we need to find the start node in the graph. so must iterate through the
@@ -52,21 +58,33 @@ public class App {
 
         for (int i = 0; i <= graph.numberOfMembers() - 1; i++) {
 
-            System.out.println(graph.getValue(i).toUpperCase() + " Node");
-            graph.getNode(i).printChildren(); /// get node is a graph function that returns memeber at a location of
-                                              /// type node. This node has an arrayList in Children
+            // System.out.println(graph.getValue(i).toUpperCase() + " Node");
+            // graph.getNode(i).printChildren(); /// get node is a graph function that returns memeber at a location of
+                                             
+            //Find the start node.
+            
+            if (graph.getValue(i) == start.name) {
+                graph.getNode(i).visited = true; 
 
-            // if (graph.getValue(i) == start.name) {
-            // // once we find the start node , check what it points to untill it is null,
-            // if
-            // // null is achieved return false , else return true
-            // // each node contains an array list. see if the list contains node end. if it
-            // // does not checck the next level, meaning the children of the nodes on the
-            // // list.
-            // }
+                //check the children of the start node. 
+                ArrayList<Node> childrenOfNodeI = graph.getNode(i).children;
+                
+                //is the end node in the arraylist?  return true if it is
+                if(childrenOfNodeI.contains(end)){
+                    return true; 
+                }else{   //if it is not check the children of the nodes in the arrayList
+                    childrenOfNodeI.forEach( entry ->{    //entry is a node
+                            //set the every node in this list as visited
+                            entry.visited = true;
+                    }); 
+                }
+               
+
+
+             }
         }
 
-        return false;
+        return solution;
     }
 
 }
