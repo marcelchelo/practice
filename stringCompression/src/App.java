@@ -1,14 +1,15 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        String ogString = "aaabcccaa";
+        String ogString = "aaacabaabbaa";
+
 
         System.out.println(compressString(ogString));
         
     }
 
-    private static StringBuilder compressString(String ogString) {
+    private static String compressString(String ogString) {
         StringBuilder solution = new StringBuilder();
-    
+        String ogStringCopy = ogString;
         while (ogString.length() > 0) {
             int cutStringAt = 0;
             
@@ -27,8 +28,13 @@ public class App {
             ogString = ogString.substring(cutStringAt);
     
         }
-    
-        return solution;
+        
+        if(ogStringCopy.length() <= solution.length()){
+            return ogStringCopy;
+        }else{
+            return solution.toString();
+        }
+        
     }
     
 }
