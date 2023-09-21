@@ -45,8 +45,7 @@ public class Main {
     }
 
     static Store getCheapestPrice(Store [] listOfStore){
-        //from the list array, get assign each to the priority quee 
-        //compare using the price of each store object 
+       
         
         PriorityQueue <Store> minPriceQuee = new PriorityQueue<>(Comparator.comparingDouble(Store :: getPrice));
         
