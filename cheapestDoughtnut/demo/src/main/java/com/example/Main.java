@@ -12,6 +12,9 @@
 
 package com.example;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 //importing the store class
 import com.example.Store;
 
@@ -20,20 +23,45 @@ public class Main {
         
         //create a function to generate x number of sotres 
         //with random prices , and random names 
-
+        
         Store [] myStoresList = generateStores(10);
 
-
-
-       //print the content of the list
+        //for every store, get the list of prices, and pass it to an 
        for (Store store : myStoresList) {
-            System.out.println(store.name);
-            System.out.println(store.price);
-
+            System.out.println(store.toString());
+            System.out.println(store.getPrice());
        }
-        
+
+
+        //getTheLowest price among stores in the list 
+        Store cheapestStore = getCheapestPrice(myStoresList);
+
+        System.out.println("the cheapest store is " + cheapestStore)  ;
+       
+        //mark that store as visited
+        cheapestStore.markAsVisited();
+        System.out.println("the store is now marked as" + cheapestStore.getVisitedStatus());
+
     }
 
+    static Store getCheapestPrice(Store [] listOfStore){
+        //from the list array, get assign each to the priority quee 
+        //compare using the price of each store object 
+        
+        PriorityQueue <Store> minPriceQuee = new PriorityQueue<>(Comparator.comparingDouble(Store :: getPrice));
+        
+        //the quee is empty, fill the priority quee with list of stores
+        for (Store store : listOfStore) {
+            minPriceQuee.add(store);
+        }
+
+        System.out.println("The quee has populated");
+
+        Store cheapestStore = minPriceQuee.peek();
+        
+        return cheapestStore;
+
+    }
 
     //a method that will return an array of stores 
     static Store[] generateStores(int storesToGenerate){
