@@ -12,15 +12,43 @@
 
 package com.example;
 
+//importing the store class
 import com.example.Store;
 
 public class Main {
     public static void main(String[] args) {
-    
-
-        Store myStore = new Store("Mars Store", 3.24);
-
-        System.out.print(myStore.toString());
         
+        //create a function to generate x number of sotres 
+        //with random prices , and random names 
+
+        Store [] myStoresList = generateStores(10);
+
+
+
+       //print the content of the list
+       for (Store store : myStoresList) {
+            System.out.println(store.name);
+            System.out.println(store.price);
+
+       }
+        
+    }
+
+
+    //a method that will return an array of stores 
+    static Store[] generateStores(int storesToGenerate){
+        //instantiate an array of stores of size storesToGenerate
+        Store [] mystoreList = new Store[storesToGenerate];
+
+        for (int i =0 ;  i< storesToGenerate ; i++){
+            //at evey i create a store object and add it to the i index
+            //of the array
+            String name = "Store" + (i + 1);
+           //generate a random price 
+           double price = 1 + (Math.random() * 9);  //random price of an doughnut 
+            mystoreList[i] = new Store(name, price);
+
+        }
+        return mystoreList;
     }
 }
